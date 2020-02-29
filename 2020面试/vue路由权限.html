@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+        1.通过route中meta属性，meta属性中roles设置角色属性，比如roles：[admin ， editor]，再根据后台所返回的角色权限的值在roles中查找，
+        若所进入的路由中的roles没有这个属性，则代表无效路由
+        缺点：不安全，通过打包文件可以找到所有的角色属性，并进行篡改
+        优点：前后端分离
+        2.进入路由时，把路由的path和后台所返回的路由进行比对，若没有，则为无效路由
+        缺点：不安全。所有的路由为静态路由。优点前后端分离
+        3.通过后台返回路由json并听过addRoutes方法动态添加路由
+        优点：安全  无法从前端读取路由的完整具体文件，无法从前端直接通过修改数据来修改权限
+    */
+    </script>
+</body>
+</html>
