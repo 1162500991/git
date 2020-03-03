@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.实现一个回调函数
+        // 2.把这个函数做成高阶函数
+        // 3.要求内部函数存在可变化性 且生成过后 某些值完全不可变 直接锁死
+        // 4.需要提供方法  仅可以通过这个方法去改变初始化时候放进去的值
+        // 5.给这个函数增加一个接口 使其可以接收方法 并且提供调用这些方法的方法 
+        // 6.调用这些方法的时候 可以触发监听 从而使页面冲渲染
+        // 回调函数
+        function callback (obj) {
+            debugger
+            obj._id = 1
+        }
+        // 高阶函数
+        function gj(cb) {
+            if (typeof cb !== 'function') {
+                throw new TypeError(`${cb} is not a function`)
+            }
+            // 初始化
+            var obj = {}
+            Object.defineProperty(obj, '_id', {
+                get: function () {
+                    return obj._id
+                },
+                set: function(val) {
+                    obj._id = val
+                    // cb(obj)
+                }
+               
+            })
+           this.init = function () {
+               cb(obj)
+           }
+            // obj._id = 1
+            // this.init = function () { // 3.提供这个方法去初始化值
+            //     for (var k in obj) {
+            //         ++obj[k]
+            //     }
+            // }
+        }
+        var g1 = new gj(callback)// 1.生成实例
+        var obj = g1.init()
+    </script>
+</body>
+</html>

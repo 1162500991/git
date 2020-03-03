@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 简单的闭包的例子
+        function f () {
+            var a = 1
+            return a
+        }
+        const func = f()
+        console.log(func)
+        // 闭包常驻内存的原因是，js代码通过闭包的形式，生成了一个新的内存驻留项的时候，
+        // 会为这个驻留项保留内存空间，也就是有变量指向了这个内存空间，当最后一个指向
+        // 这个内存变量的指针废弃不用的时候，这块内存空间就会被释放
+        func = null
+        // js垃圾回收机制
+        /*
+            垃圾回收机器，在运行的时候会给存储的所有变量都加上标记
+            去掉环境中的变量以及被环境中的变量医用的变量的标记
+            在被加上的标记表示被视为准备删除的变量
+            垃圾回收器完成内存清除工作，销毁那些带标记的值并回收他们所占用的内存空间
+        */
+    </script>
+</body>
+</html>

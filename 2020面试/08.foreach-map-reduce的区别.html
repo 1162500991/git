@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 相同点 参数一样  都不能中断
+            //  都不会改变原数组 
+        // 不同点
+        var arr = [1,2,3]
+        var arr0 = arr.forEach((item, i) => {
+            console.log(item)
+        })
+        console.log(arr0) //返回undefined
+        var arr1 = arr.map((item, i) => {
+            // 什么都没有默认返回undefined 每个元素都是undefined
+        })
+        console.log(arr) // 返回新数组
+        // reduce
+        var b = arr.reduce((pre, cur) => {
+            return pre - cur
+        }) // reduce第二个参数是回调函数的参数的第一次遍历的pre
+        console.log(b) // 返回3
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // Event Loop是什么
+    /*
+    宏观列
+        settimeout
+        setinterval
+        I/O
+    微观列
+        promise
+        object.observe (被遗弃不能用了)
+    */
+    
+    var obj = {a: 1};
+    Object.observe(obj, output); //为对象指定监视时调用的回调函数
+ 
+    obj.b = 2; //添加属性
+    obj.a = 2; //修改属性值
+    Object.defineProperties(obj, {a: { enumerable: false}}); //修改属性设定
+    delete obj.b; //删除属性  
+    function output(change) {
+        //回调函数，可以在此处书写在页面上的输出。
+        console.log(change)
+    }
+    </script>
+</body>
+</html>

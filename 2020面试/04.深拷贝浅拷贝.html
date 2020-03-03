@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 1.什么是深拷贝什么是浅拷贝
+    /*
+    深拷贝
+        复制对象的所有层级和实现办法
+    浅拷贝
+        只复制一层对象，当对象的属性是是引用类型时，实际复制的是它的引用，
+        当引用指向的值发生改变时，也会跟着改变
+    */
+    // 浅拷贝
+    // var obj = {a:1, b: {c:2}}
+    // var shallowObj = shallow(obj)
+    // function shallow (obj) {
+    //     let newObj = {}
+    //     for (var k in obj) {
+    //         if(!newObj.hasOwnProperty(k)) {
+    //             newObj[k] = obj[k]
+    //         }
+    //     }
+    //     return newObj
+    // }
+    // console.log(shallowObj) // {a:1, b: {c:2}}
+    // console.log(shallowObj.b === obj.b) // true 所以复制复杂数据类型就是复制的引用
+    // 深拷贝
+    var obj = {
+        a:1,
+        b: [1,2],
+        c: {
+            d:3,
+            e: [5.9]
+        }
+    }
+    var newObj = deepClone(obj)
+    function deepClone (obj) {
+        if (obj instanceof Array) {
+            var n = []
+            for (var i = 0; i < obj.length; i++) {
+                n[i] = deepClone(obj[i])
+            }
+            return n
+        } else if (obj instanceof Object) {
+            var p = {}
+            for (var k in obj) {
+                p[k] = deepClone(obj[k])
+            }
+            return p
+        } else {
+            return obj
+        }
+    }
+    console.log(newObj)
+    /*
+    {
+        a:1,
+        b: [1,2],
+        c: {
+            d:3,
+            e: [5.9]
+        }
+    }
+    */
+    console.log(newObj.b === obj.b) //false
+    </script>
+</body>
+</html>

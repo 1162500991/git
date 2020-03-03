@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 一.promise 有几种状态
+    // 1.初始化，状态：pending
+    // ​
+    // 2.当调用resolve(成功)，状态：pengding=>fulfilled
+    // ​
+    // 3.当调用reject(失败)，状态：pending=>rejected
+    // 二.promise和settimeout的执行顺序
+    console.log('1');
+
+    setTimeout(function() {
+        console.log('2');
+        // process.nextTick(function() {
+        //     console.log('3');
+        // })
+        new Promise(function(resolve) {
+            console.log('4');
+            resolve();
+        }).then(function() {
+            console.log('5')
+        })
+    })
+    // process.nextTick(function() {
+    //     console.log('6');
+    // })
+    new Promise(function(resolve) {
+        console.log('7');
+        resolve();
+    }).then(function() {
+        console.log('8')
+    }).then(function () {
+        console.log('15')
+    })
+
+    setTimeout(function() {
+        console.log('9');
+        // process.nextTick(function() {
+        //     console.log('10');
+        // })
+        new Promise(function(resolve) {
+            console.log('11');
+            resolve();
+        }).then(function() {
+            console.log('12')
+        })
+    })
+    // 1 7 6 8 15 2 4 3 5 9 11 10 12
+    // 三 settimeout的最小执行单位 是4ms
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    class subject {
+        constructor() {
+            this.state = 0
+            this.observes = []
+        }
+        getState () {
+            return this.state
+        }
+        setState (state) {
+            this.state = state
+            this.notify()
+        }
+        notify() {
+            this.observes.forEach(obj => {
+                obj.update()
+            })
+        }
+        attach (that) {
+            this.observes.push(that)
+        }
+    }
+    class obser {
+        constructor (name, sub) {
+            this.name = name
+            this.sub = sub
+            this.subject.attach(this)
+        }
+        update () {
+            console.log(`${this.name} update, state: ${this.sub.getState()}`)
+        }
+    }
+    </script>
+</body>
+</html>

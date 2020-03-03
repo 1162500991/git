@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #father {
+        display: flex;
+        width: 100%;
+        height: 100px;
+        justify-content: space-between;
+    }
+    .child {
+        flex: 1;
+        background: red;
+    }
+    .child2 {
+        margin-right: 20px;
+    }
+    .child1 {
+        margin-right: 30px;
+    }
+    </style>
+</head>
+<body>
+    <!-- 一行三个div,1与2间隔20px,2与3间隔20px,三个div自适应 -->
+    <div id="father">
+        <div class="child1 child"></div>
+        <div class="child2 child"></div>
+        <div class="child3 child"></div>
+    </div>
+</body>
+</html>

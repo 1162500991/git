@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 1.递归
+    // var arr = [1,[2,[3]]]
+    // var newArr = []
+    // function getSameLevel(arr) {
+    //     for (var i = 0; i < arr.length; i++) {
+    //         if (arr[i].length) {
+    //             getSameLevel(arr[i])
+    //         } else {
+    //             newArr.push(arr[i])
+    //         }
+    //     }
+    // }
+    // getSameLevel(arr)
+    // console.log(newArr)
+    // 2.toString
+    // var arr = [1,[2,[3]]]
+    // var newArr = arr.toString()
+    // console.log(newArr.split(',')) 
+    //缺点就是修改了原数组中的元素的原本属性
+    // 3.flat es2019新增
+    var arr = [1,[2,[3]]]
+    console.log(arr.flat(3))  //3就是拉平3层
+    </script>
+</body>
+</html>
