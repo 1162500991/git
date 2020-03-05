@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 入参不同
+    /*
+    bind(this)  并不会立即执行函数，而是返回一个绑定了this的新函数
+    apply(this, [a,b,c])
+    call(this,a,b,c)
+    三者都是function原型下的方法
+    */
+    // 1.bind
+    // var a = {a: 1}
+    // var b = function () {
+
+    // }
+    // var c = b.bind(a)
+    // console.log(c === b)// false
+    // //  1 function (){} 2  所以  bind不会立即执行
+    // // 2.call
+    // var a = {a: 1}
+    // var b = function () {}
+    // var c = b.call(a)
+    // console.log(c) //undefined
+    // // 3.apply
+    // var a = [{},{}]
+    // var b = function () {}
+    // var c = b.apply(a)
+    // console.log(c) //undefined
+    // 4.封装bind
+    Function.prototype._bind = function (context = window) {
+    //  将类数组 转化成数组
+        var argArr = [...arguments]
+        // 后面的参数
+        var args = argArr.slice(1)
+        var self = this
+        // 返回新函数
+        return function () {
+            self.apply(context, [...args, ...arguments])
+        }
+    }
+    // var name = 'li'
+    // var obj = { name: 2 }
+    // function fn () {
+    //     console.log(this.name, [...arguments])
+    // }
+    // fn(1,2,3,4)
+    // fn._bind(obj, 1 , 2)(3, 4)
+    // fn.bind(obj, 1, 2)(3, 4)
+    // 5.封装call
+    Function.prototype._call = function(context = window) {
+        var args = [...arguments].slice(1)
+        context.fn = this
+        let result = context.fn(args)
+        delete context.fn
+        return result
+    } 
+    // 6.封装apply
+    Function.prototype._apply = function (context = window) {
+        var args = [...arguments][1]
+        context.fn = this
+        let result = context.fn(args)
+        delete context.fn
+        return result
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    history模式是利用浏览器自带url的堆栈管理，
+    hash是基于锚点的路由管理
+    */
+    // 1.什么情况用history
+        // history模式是利用浏览器自带的url堆栈管理，并且h5新增
+        // 了pushState()和replaceState()方法
+    // 2.什么情况用哈希 
+        // hash虽然会出现在url中但是不会包含在http请求中，
+        // 对后端完全没有影响，因此不会重新加载页面
+    // 3.history的弊端
+        // 当前端url和后端的路由不对应时就会出现404 
+        // history模式下打包空白和刷新404的问题
+        // 比如前端的 www.abc.com/book/id  后端为 book/id缺少对路由的处理
+    // 4.hash的弊端
+    
+    </script>
+</body>
+</html>

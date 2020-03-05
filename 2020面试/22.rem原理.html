@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // rem布局就是rem是以根节点大小为基础进行统一计算
+    // 750的图 除以10  就是75px  也就是1 rem代表75px
+    // rem解决的是字体响应问题，
+    // 响应式布局只能解决元素大小的改变，
+    // 但是解决不了字体问题，
+    // 所以用rem进行弥补
+    // 后来被广泛使用了，
+    // 就像是浮动最早是用来做文字环绕图片效果的，
+    // 现在被用来进行布局
+    // 并且现在的尺寸种类越来越多，
+    // 因为没有哪一种包治百病，
+    // 不断进行补充，类似打补丁
+
+
+    (function(win, doc) {
+        function changeSize() {
+            doc.querySelector('html').style.fontSize = doc.documentElement.clientWidth / 10 + 'px';
+        } 
+        changeSize();
+        win.addEventListener('resize', changeSize, false);
+    })(window, document);
+    </script>
+</body>
+</html>

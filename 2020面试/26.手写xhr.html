@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // http://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp
+        var xhr1 = new XMLHttpRequest;
+        xhr1.open("GET", 'http://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp');
+        // xhr1.setRequestHeader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36');
+        xhr1.onreadystatechange = function() {
+            if (xhr1.readyState == 4 && xhr1.status == 200) {
+                console.log(xhr1.responseText);
+            }
+        }
+
+        xhr1.send("");
+    </script>
+</body>
+</html>

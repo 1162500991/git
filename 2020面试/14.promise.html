@@ -19,9 +19,9 @@
 
     setTimeout(function() {
         console.log('2');
-        // process.nextTick(function() {
-        //     console.log('3');
-        // })
+        process.nextTick(function() {
+            console.log('3');
+        })
         new Promise(function(resolve) {
             console.log('4');
             resolve();
@@ -29,9 +29,9 @@
             console.log('5')
         })
     })
-    // process.nextTick(function() {
-    //     console.log('6');
-    // })
+    process.nextTick(function() {
+        console.log('6');
+    })
     new Promise(function(resolve) {
         console.log('7');
         resolve();
@@ -43,9 +43,9 @@
 
     setTimeout(function() {
         console.log('9');
-        // process.nextTick(function() {
-        //     console.log('10');
-        // })
+        process.nextTick(function() {
+            console.log('10');
+        })
         new Promise(function(resolve) {
             console.log('11');
             resolve();
@@ -55,6 +55,14 @@
     })
     // 1 7 6 8 15 2 4 3 5 9 11 10 12
     // 三 settimeout的最小执行单位 是4ms
+    // promise延迟一秒执行
+     // new Promise (res => {
+    //     setTimeout(() => {
+    //         res(1)
+    //     }, 1000)
+    // }).then((res)=> {
+    //     console.log(res)
+    // })
     </script>
 </body>
 </html>

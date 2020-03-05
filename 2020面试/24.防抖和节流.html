@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    滚动事件做复杂计算频繁调用函数很可能会造成页面的卡顿，
+    这时候我们更希望把多次计算合并成一次，只操作一个精确点，
+    在js中把这种方式成为防抖debounce和节流throttle
+    防抖是将多次执行变为最后一次执行，节流是将多次执行变为每隔一段时间执行
+    */
+    // 1. 防抖
+    // 监听
+    // window.addEventListener('scroll', debounce(handle, wait))
+    // // 防抖
+    // function debounce (fn, wait) {
+    //     var timeout = null
+    //     return function () {
+    //         if (timeout !== null) {
+    //             clearTimeout(timeout)
+    //         }
+    //         timeout = setTimeout(fn, wait);
+    //     }
+    // }
+    // // 处理函数
+    // function handle () {
+    //     console.log(Math.random())
+    // }
+    // 2.节流
+    // 监听
+    window.addEventListener('scroll', throttle(handle, 1000))
+    // 处理函数
+    function handle () {
+        console.log(Math.random())
+    }
+    // 节流
+    function throttle (fn, wait) {
+        var timeout = null
+        var startTime = Date.now()
+        return function () {
+            var currentime = Date.now()
+            // 判断执行时间是不是一秒
+            var time = wait - (currentime - startTime)
+            var that = this
+            var args = arguments
+            // time小于 0 或者大于0 就代表时间大于1秒就执行
+            if (time <= 0) {
+                handle.apply(that, args)
+                startTime = Date.now()
+            } else {//小于一秒就不执行  生成新的定时器
+                timeout = setTimeout(fn, wait)
+            }
+        } 
+    }
+    </script>
+</body>
+</html>
