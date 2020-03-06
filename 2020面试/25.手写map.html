@@ -8,11 +8,16 @@
 </head>
 <body>
     <script>
-        Array.prototype._map = function (fn) {
+        Array.prototype._map = function (fn, context) {
             if (typeof fn !== 'function') {
                 throw TypeError(`${fn} is not a function`)
             }
-            
+            var length = this.length
+            var newArr = []
+            for (var i = 0; i < length; i++) {
+                newArr.push(fn.call(context, this[i], i, this))
+            }
+            return newArr
         }
     </script>
 </body>
